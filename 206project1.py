@@ -12,7 +12,24 @@ def getData(file):
 #cases.
 
 	#Your code here:
-	pass
+	openfile = open(file)
+	keylist = []
+	dictlist = []
+	i = 0
+	for line in openfile:
+		wordlist = []
+		datadict = {}
+		wordlist = line.split()
+		if (i == 0):
+			for item in wordlist:
+				keylist.append(item)
+			i += 1
+		j = 0
+		for item in keylist:
+			datadict[keylist[j]] = wordlist[j]
+			j += 1
+		dictlist.append(datadict)
+	return dictlist
 
 #Sort based on key/column
 def mySort(data,col):
