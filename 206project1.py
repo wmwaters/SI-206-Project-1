@@ -49,9 +49,25 @@ def classSizes(data):
 # [('Senior', 26), ('Junior', 25), ('Freshman', 21), ('Sophomore', 18)]
 
 	#Your code here:
-	pass
-
-
+	tuplelist = []
+	num_seniors = 0
+	num_juniors = 0
+	num_sophomores = 0
+	num_freshman = 0
+	for item in data:
+		if (item["Class"] == "Senior"):
+			num_seniors += 1
+		elif (item["Class"] == "Junior"):
+			num_juniors += 1
+		elif (item["Class"] == "Sophomore"):
+			num_sophomores += 1
+		else:
+			num_freshman += 1
+	tuplelist.append(('Senior', num_seniors))
+	tuplelist.append(('Junior', num_juniors))
+	tuplelist.append(('Sophomore', num_sophomores))
+	tuplelist.append(('Freshman', num_freshman))
+	return sorted(tuplelist, key = lambda x : x[1], reverse = True)
 
 # Find the most common day of the year to be born
 def findDay(a):
