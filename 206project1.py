@@ -1,3 +1,6 @@
+#William Waters
+#discussed date/time with Austin McCall
+
 import os
 import filecmp
 
@@ -85,6 +88,10 @@ def findDay(a):
 			dict_of_days[dob] = dict_of_days[dob] + 1
 		else:
 			dict_of_days[dob] = 1
+	list_of_days = list(dict_of_days.items())
+	list_of_days = sorted(list_of_days, key = lambda x:x[1], reverse = True)
+	return int(list_of_days[0][0])
+
 
 # Find the average age (rounded) of the Students
 def findAge(a):
@@ -93,7 +100,22 @@ def findAge(a):
 # most often seen in the DOB
 
 	#Your code here:
-	pass
+	total_years = 0
+	total_peeps = 0
+	#this uses system's current date/time
+	import datetime
+	now = str(datetime.datetime.now())
+	date = now.split()[0]
+	#create list of current date/time
+	datelist = date.split("-")
+	for person in a:
+		dob = person["DOB"].split("/")
+		age = int(datelist[0])-int(dob[2])
+		if int(datelist[1])>int(dob[1]):
+			age-=1
+		total_years += age
+		total_peeps += 1
+	return int(round(total_years / total_peeps))
 
 #Similar to mySort, but instead of returning single
 #Student, all of the sorted data is saved to a csv file.
