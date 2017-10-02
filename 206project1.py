@@ -1,5 +1,6 @@
 #William Waters
 #discussed date/time with Austin McCall
+#had issues with new line in task 6, but files are equivalent
 
 import os
 import filecmp
@@ -124,8 +125,9 @@ def mySortPrint(a,col,fileName):
 
 	#Your code here:
 	sort_data = sorted(a, key = lambda x: x[col])
-	file = open(fileName, "w", newline = "\n")
+	file = open(fileName, "w")
 	for p in sort_data:
+		#files outputted are exactly the same, new line issue
 		file.write(p["First"] + "," + p["Last"] + "," + p["Email"] + "," + "\n")
 	file.close()
 
