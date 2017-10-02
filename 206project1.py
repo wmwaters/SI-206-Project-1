@@ -19,16 +19,17 @@ def getData(file):
 	for line in openfile:
 		wordlist = []
 		datadict = {}
-		wordlist = line.split()
+		wordlist = line.split(',')
 		if (i == 0):
 			for item in wordlist:
 				keylist.append(item)
 			i += 1
-		j = 0
-		for item in keylist:
-			datadict[keylist[j]] = wordlist[j]
-			j += 1
-		dictlist.append(datadict)
+		else:
+			j = 0
+			for item in keylist:
+				datadict[keylist[j]] = wordlist[j]
+				j += 1
+			dictlist.append(datadict)
 	return dictlist
 
 #Sort based on key/column
@@ -37,7 +38,8 @@ def mySort(data,col):
 #Output: Return a string of the form firstName lastName
 
 	#Your code here:
-	pass
+	sorteddata = sorted(data, key = lambda x : x[col])
+	return sorteddata[0]["First"] + " " + sorteddata[0]["Last"]
 
 #Create a histogram
 def classSizes(data):
