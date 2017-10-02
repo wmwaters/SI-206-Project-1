@@ -19,7 +19,7 @@ def getData(file):
 	for line in openfile:
 		wordlist = []
 		datadict = {}
-		wordlist = line.split(',')
+		wordlist = line.strip().split(',')
 		if (i == 0):
 			for item in wordlist:
 				keylist.append(item)
@@ -76,8 +76,15 @@ def findDay(a):
 # most often seen in the DOB
 
 	#Your code here:
-	pass
-
+	dict_of_days = {}
+	for person in a:
+		dob = person['DOB']
+		dob = dob.split('/')
+		dob = dob[1]
+		if dob in dict_of_days:
+			dict_of_days[dob] = dict_of_days[dob] + 1
+		else:
+			dict_of_days[dob] = 1
 
 # Find the average age (rounded) of the Students
 def findAge(a):
