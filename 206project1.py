@@ -92,7 +92,6 @@ def findDay(a):
 	list_of_days = sorted(list_of_days, key = lambda x:x[1], reverse = True)
 	return int(list_of_days[0][0])
 
-
 # Find the average age (rounded) of the Students
 def findAge(a):
 # Input: list of dictionaries
@@ -124,9 +123,11 @@ def mySortPrint(a,col,fileName):
 #Output: None
 
 	#Your code here:
-	pass
-
-
+	sort_data = sorted(a, key = lambda x: x[col])
+	file = open(fileName, "w", newline = "\n")
+	for p in sort_data:
+		file.write(p["First"] + "," + p["Last"] + "," + p["Email"] + "," + "\n")
+	file.close()
 
 ################################################################
 ## DO NOT MODIFY ANY CODE BELOW THIS
